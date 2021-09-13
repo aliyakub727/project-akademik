@@ -12,7 +12,6 @@
             font-family: sans-serif;
             background: url(img/bge.jpg) no-repeat;
             background-size: cover;
-            
         }
         .login-box{
             width: 280px;

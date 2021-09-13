@@ -13,14 +13,6 @@ class Register extends BaseController
     public function process()
     {
     	if (!$this->validate([
-            'name' => [
-                'rules' => 'required|min_length[5]|max_length[100]',
-                'errors' => [
-                    'required' => '{field} Harus diisi',
-                    'min_length' => '{field} Minimal 4 Karakter',
-                    'max_length' => '{field} Maksimal 100 Karakter',
-                ]
-            ],
     		'username' => [
     			'rules' => 'required|min_length[5]|max_length[20]|is_unique[users.username]',
     			'errors' => [
@@ -44,8 +36,8 @@ class Register extends BaseController
     				'matches' => 'Konfirmasi Password tidak sesuai dengan password',
     			]
     		],
-    		'email' => [
-    			'rules' => 'required|min_length[5]|max_length[100]|valid_email',
+    		'name' => [
+    			'rules' => 'required|min_length[4]|max_length[100]',
     			'errors' => [
     				'required' => '{field} Harus diisi',
     				'min_length' => '{field} Minimal 4 Karakter',
@@ -58,10 +50,10 @@ class Register extends BaseController
     	}
     	$users = new UsersModel();
     	$users->insert([
-            'name' => $this->request->getVar('name'),
     		'username' => $this->request->getVar('username'),
     		'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
-    		'email' => $this->request->getVar('email')
+    		'name' => $this->request->getVar('name'),
+            'role' => $this->request->getVar('role')
     	]);
     	return redirect()->to('Login');
     }

@@ -1,9 +1,9 @@
 <?php
- 
+
 namespace App\Controllers;
- 
+
 use App\Models\UsersModel;
- 
+
 class Login extends BaseController
 {
     public function index()
@@ -23,9 +23,10 @@ class Login extends BaseController
                 session()->set([
                     'username' => $dataUser->username,
                     'name' => $dataUser->name,
+                    'role' => $dataUser->role,
                     'logged_in' => TRUE
                 ]);
-                return redirect()->to(base_url('Home'));
+                return redirect()->to(base_url('dashboard'));
             } else {
                 session()->setFlashdata('error', 'Username & Password Salah');
                 return redirect()->back();

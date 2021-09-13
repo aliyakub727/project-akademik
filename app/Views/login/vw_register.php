@@ -12,7 +12,6 @@
             font-family: sans-serif;
             background: url(img/bge.jpg) no-repeat;
             background-size: cover;
-            
         }
         .login-box{
             width: 280px;
@@ -77,10 +76,6 @@
     <form method="post" action="<?= base_url(); ?>/register/process">
         <?= csrf_field(); ?>
         <div class="textbox">
-            <i class="fas fa-envelope"></i>
-            <input type="text" class="form-control" id="email" name="email" placeholder="Email">
-        </div>
-        <div class="textbox">
             <i class="fas fa-user"></i>
             <input type="text" class="form-control" id="username" name="username" placeholder="Username">
         </div>
@@ -96,7 +91,17 @@
             <i class="fas fa-user-circle"></i>
             <input type="text" class="form-control" id="name" name="name" placeholder="Nama">
         </div>
-
+        <div class="textbox">
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Role</label>
+              <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="role">
+                <option selected>Choose...</option>
+                <option value="Admin">Admin</option>
+                <option value="Operator">Operator</option>
+                <option value="Siswa">Siswa</option>
+                <option value="Guru">Guru</option>
+                <option value="Kepala Sekolah">Kepala Sekolah</option>
+              </select>
+        </div>
         <button type="submit" class="btn btn-primary">Register</button>
 
     </form>
